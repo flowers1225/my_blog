@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 别抢我的糖丶
-tagline: Supporting tagline
+tagline: 
 ---
 {% include JB/setup %}
 
