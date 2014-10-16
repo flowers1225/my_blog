@@ -8,12 +8,12 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
+title : zhou blog
 tagline: Site Tagline
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
+  name : flowers
+  email : asdflowers1225@gmail.com
+  github : flowers1225
   twitter : username
   feedburner : feedname
 
@@ -25,7 +25,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://username.github.io
+production_url : http://flowers1225.github.io/my_blog
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
@@ -82,7 +82,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : flowers
     livefyre :
       site_id : 123
     intensedebate :
