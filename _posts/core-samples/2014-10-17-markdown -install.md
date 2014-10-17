@@ -32,7 +32,7 @@ tags : [markdown, package, sublime text2]
 
      - 最后重启 sublime text 生效.
 
-     - 如果在 Preferences -> Package Settings中见到Package Control这一项，就说明安装成功了。
+     - 如果在 Preferences -> Package Settings中见到Package Control这一项，就说明安装成功了.
 
 ###二、让markdown高亮显示:
 
