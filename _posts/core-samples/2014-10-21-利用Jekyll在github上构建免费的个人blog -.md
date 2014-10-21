@@ -53,7 +53,7 @@ PS:我的系统环境是win7 64bit
 	输入命令 “curl http://curl.haxx.se/ca/cacert.pem -o cacert.pem” ,然后把生成在Ruby目录下的cacert.pem移动到里面的bin目录下.
 	新建环境变量.如下图所示：
 	
-![markdown](/my_blog/images/jekyll_2.png)
+![markdown](/my_blog/images/jekyll_2.jpg)
 
 **PS：如果电脑中没有curl请撮这里[http://curl.haxx.se/download.html](http://curl.haxx.se/download.html),安装好之后将curl添加到系统环境变量中.不会操作请搓这里[http://www.baidu.com/](http://www.baidu.com/).**
 
