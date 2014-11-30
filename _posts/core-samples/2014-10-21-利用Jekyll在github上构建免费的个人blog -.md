@@ -1,0 +1,111 @@
+---
+layout: post
+category : lessons
+tagline: ""
+tags : [Jekyll, github, Ruby]
+---
+{% include JB/setup %}
+
+### 一、搭建准备:
+
+*   首先需要有一个github的帐号,如果没的同学请绕过下面,点击左上角的小叉叉.
+
+### 二、搭建开始:
+
+>#### 1、安装Ruby
+
+PS:我的系统环境是win7 64bit
+
+
+*   1、进入[http://rubyinstaller.org/downloads/](http://rubyinstaller.org/downloads/)
+下载Ruby和DevKit并安装，因为运行Jekyll需要他们的支持，DevKit请大家选择自己的版本，分64位和32位两个版本.
+
+**PS:安装的目录文件最好不要出现空格* ，例如Program Files这种文件名称会出现意想不到问题！切记！！**
+
+*   2、Ruby安装好后再安装RubyGems.
+	
+	-打开系统的命令行，开始那里打“cmd”回车后，进入到Ruby的安装目录，G:\Ruby21-x64”，那么就用命令行进入目录中.
+
+	-输入 “ruby --version” 出现版本号,说明ruby已经安装好,如下图所示.
+
+	![markdown](/my_blog/images/jekyll_1.jpg)
+
+	-然后输入 “gem update --system”
+	
+	**PS:如果出现更新失败，最有可能的原因是因为我我大天朝的网络问题，不过可以使用淘宝提供的镜像文件，猛撮这里你就知道怎么安装了[http://ruby.taobao.org/](http://ruby.taobao.org/).**
+
+>#### 2、一切准备就绪，安装Jekyll
+
+*  1、输入安装命令 “gem install jekyll” 一般会出现以下问题
+
+   - 状况一:
+
+>	ERROR:  Could not find a valid gem 'jekyll' (>= 0), here is why:
+	          Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server ce
+	rtificate B: certificate verify failed (https://rubygems.global.ssl.fastly.net/quick/Marshal.4.8/jekyll-1.3.0.gemspec.rz
+	)
+	ERROR:  Possible alternatives: jekyll.
+
+
+   - 解决方案:
+
+>	1、下载认证文件
+	输入命令 “curl http://curl.haxx.se/ca/cacert.pem -o cacert.pem” ,然后把生成在Ruby目录下的cacert.pem移动到里面的bin目录下.
+	新建环境变量.如下图所示：
+	
+![markdown](/my_blog/images/jekyll_2.jpg)
+
+**PS：如果电脑中没有curl请撮这里[http://curl.haxx.se/download.html](http://curl.haxx.se/download.html),安装好之后将curl添加到系统环境变量中.不会操作请搓这里[http://www.baidu.com/](http://www.baidu.com/).**
+
+  - 状况二:
+
+>	ERROR:  Error installing jekyll:
+        The 'fast-stemmer' native gem requires installed build tools.
+	Please update your PATH to include build tools or download the DevKit
+	from 'http://rubyinstaller.org/downloads' and follow the instructions
+	at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'
+
+ - 解决方案:
+	
+	回到刚才的第一步，安装好Devkit后，运行msys.bat后，然后输入 “gem install jekyll” 来安装jakyll.如果出现下图情况说明安装成功.
+
+	![markdown](/my_blog/images/jekyll_3.jpg)
+
+>#### 3、Jekyll安装后,下载bootstrap的Jekyll网页模板.
+
+*  使用命令 “git clone https://github.com/plusjade/jekyll-bootstrap.git jekyll” 将模版下载下来。
+   然后cd进入jekyll”目录.
+   输入命令 “jekyll serve” 启动服务.
+   之后在浏览器中输入 “http://localhost:4000/” 就可以看见刚才下载好的模版了.
+
+>#### 4、发布到Github上.
+
+*   然后在[github](在github网站，我们创建一个新的库，jekyll-demo)网站，创建一个新的库,用来存在jekyll模版,名称随意.
+
+>        使用命令 “git remote set-url origin git@github.com:名称.git”.
+	  git add .	
+	  git commit -m 'new_blog'.
+	  git push origin master.
+	  新建一个分支用来存放blog文件
+	  git branch gh-pages
+	  切换分支
+	  git checkout gh-pages
+	  最后修改jekyll的_config.yml文件,设置base_path
+
+*   最后发布项目
+
+>       git add .	
+	  git commit -m 'new_blog'.
+	  git push origin gh-pages.	
+
+*   发布10几分钟后在github上面浏览项目。http://你的git名称.github.io/项目名称.
+
+*   如果失败github会以邮件的形式告诉你失败的原因。
+
+*   最后你就可以看见属于自己的一个blog了！
+
+
+
+
+
+
