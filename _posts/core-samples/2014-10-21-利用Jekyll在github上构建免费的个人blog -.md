@@ -28,7 +28,7 @@ PS:我的系统环境是win7 64bit
 
 	-输入 “ruby --version” 出现版本号,说明ruby已经安装好,如下图所示.
 
-	![markdown](/my_blog/images/jekyll_1.jpg)
+	![markdown](/images/jekyll_1.jpg)
 
 	-然后输入 “gem update --system”
 	
@@ -53,7 +53,7 @@ PS:我的系统环境是win7 64bit
 	输入命令 “curl http://curl.haxx.se/ca/cacert.pem -o cacert.pem” ,然后把生成在Ruby目录下的cacert.pem移动到里面的bin目录下.
 	新建环境变量.如下图所示：
 	
-![markdown](/my_blog/images/jekyll_2.jpg)
+![markdown](/images/jekyll_2.jpg)
 
 **PS：如果电脑中没有curl请撮这里[http://curl.haxx.se/download.html](http://curl.haxx.se/download.html),安装好之后将curl添加到系统环境变量中.不会操作请搓这里[http://www.baidu.com/](http://www.baidu.com/).**
 
@@ -69,7 +69,7 @@ PS:我的系统环境是win7 64bit
 	
 	回到刚才的第一步，安装好Devkit后，运行msys.bat后，然后输入 “gem install jekyll” 来安装jakyll.如果出现下图情况说明安装成功.
 
-	![markdown](/my_blog/images/jekyll_3.jpg)
+	![markdown](/images/jekyll_3.jpg)
 
 >#### 3、Jekyll安装后,下载bootstrap的Jekyll网页模板.
 

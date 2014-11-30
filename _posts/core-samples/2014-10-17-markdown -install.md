@@ -26,7 +26,7 @@ tags : [markdown, package, sublime text2]
 
      - 查找到 install package回车，如下图所示.
 
-     ![markdown](/my_blog/images/markdown.png)
+     ![markdown](/images/markdown.png)
 
      - 输入 markdown preview 回车.
 
@@ -43,7 +43,7 @@ tags : [markdown, package, sublime text2]
 
 *    在Preferences–>Color Scheme–>User–>Monokai-custom 或者如下图所示.
 
-      ![markdown](/my_blog/images/markdown_2.jpg)
+      ![markdown](/images/markdown_2.jpg)
 
 *    最后大功告成！
 
