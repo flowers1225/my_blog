@@ -16,6 +16,26 @@ author :
   github : flowers1225
   twitter : username
   feedburner : feedname
+  
+# The way of excerpt. There are two options: "teaser" and "truncate_words".
+# "teaser" option: look for the More tag (<!--more-->) and create a teaser from the content that precedes the More tag.
+#                  You must place "<!--more-->" at paragraph in post. The whole content will be displayed in homepage if no More tag found in post.
+# "truncate_words" option: generate an excerpt automatically by selecting the first 20 words of the post. It doesn't work well in some of no-English post.
+#
+excerpt : teaser
+
+# The number of items displayed per page.
+#
+paginate : 5
+
+# The destination of the pagination pages
+#
+paginate_path : ":num"
+
+# Whether to enable load more post automatically in homepage. Set 'true' to enable. Set 'false' to disable.
+# You must click the 'load more' button to load more posts when it is set to 'false'.
+#
+auto_loadmore : true
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
