@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-1、practice
+
 =======
 # Jekyll-Bootstrap
 
