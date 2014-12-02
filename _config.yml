@@ -11,12 +11,12 @@ highlighter: pygments
 title : 别抢我的糖丶
 tagline: Site Tagline
 author :
-  name : flowers
+  name : flowers1225
   email : asdflowers1225@gmail.com
   github : flowers1225
   twitter : username
   feedburner : feedname
-  
+
 # The way of excerpt. There are two options: "teaser" and "truncate_words".
 # "teaser" option: look for the More tag (<!--more-->) and create a teaser from the content that precedes the More tag.
 #                  You must place "<!--more-->" at paragraph in post. The whole content will be displayed in homepage if no More tag found in post.

@@ -18,6 +18,7 @@ h1, h2, h3, h4 {
   color: #f22430;
 }
 #footer {
+  text-align: center;
   background-color: #fdcd60;
 }
 
@@ -77,3 +78,25 @@ h1, h2, h3, h4 {
   background: #57A957;
   border: 1px solid #4c964d;
   color: #FFF; }
+
+/*m-section-index*/
+.m-section-index{
+  padding-bottom: 20px;
+}
+.m-section-index .content{
+  margin-left: 20px;
+  border:2px solid #8E8E8E;
+  border-radius: 15px 15px;
+  padding: 10px;
+}
+.m-section-index .content h3{
+  color: #000;
+  font-size:18px;
+}
+.m-section-index .content h4{
+  color: #000;
+  font-size:16px;
+}
+.m-section-index .content .readmore{
+  margin-left: 80%;
+}

@@ -4,29 +4,8 @@ title: 别抢我的糖丶
 tagline: 
 ---
 {% include JB/setup %}
-<style>
-	.m-section{
-		padding-bottom: 20px;
-	}
-	.m-section .content{
-		margin-left: 20px;
-		border:2px solid #8E8E8E;
-		border-radius: 15px 15px;
-		padding: 10px;
-	}
-	.m-section .content h3{
-		color: #000;
-		font-size:18px;
-	}
-	.m-section .content h4{
-		color: #000;
-		font-size:16px;
-	}
-	.m-section .content .readmore{
-		margin-left: 80%;
-	}
-</style>
-<div class="m-section">
+
+<div class="m-section m-section-index">
   {% for post in site.posts %}
     <div class="section-box">
 	  	<div class="section-inner">
