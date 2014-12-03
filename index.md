@@ -9,21 +9,27 @@ tagline:
   {% for post in site.posts %}
     <div class="section-box">
 	  	<div class="section-inner">
-			<h3 class="title">
-				<span>{{ post.date | date_to_string }}</span>&raquo;
+			<h2 class="title">
 				<a href="{{ post.url }}">{{ post.title }}</a>
 				<span class="author">{{ post.tagline }}</span>
-			</h3>
+			</h2>
+			<p>
+				<span class="glyphicon glyphicon-time"></span> Posted on {{ post.date | date_to_string }}
+			</p>
+			<hr>
 			<div class="content">
 				{% case site.excerpt %}
 				{% when "truncate_words" %}
-				<span class="teaser"><p>{{ post.content | strip_html | truncatewords: 20 }}</p>
+				{ post.content | strip_html | truncatewords: 20 }}</p>
 				{% when "teaser" %}
-				<span class="teaser">{{ post.content  | split:'<!--more-->' | first }}
+				{{ post.content  | split:'<!--more-->' | first }}
 				{% endcase %}
-				</span>
-				<span class="readmore"><a href="{{ post.url }}">Read More</a></span>
+				<!-- <span class="readmore"><a href="{{ post.url }}">Read More</a></span> -->
+			<a class="btn btn-primary" href="{{ post.url }}">Read More
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
 			</div>
+			<hr>
 		</div>
 	</div>
   {% endfor %}
