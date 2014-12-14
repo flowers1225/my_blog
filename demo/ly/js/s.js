@@ -3,10 +3,10 @@
 ;(function(){
     //分享文案
     window.weixinData = {
-        title: '',
-        desc: '',
-        link: '',
-        imgUrl: '',
+        title: '赠送礼物',
+        desc: '赠送礼物',
+        link: 'http://www.flowers1225.com/demo/ly/index.html',
+        imgUrl: 'http://www.flowers1225.com/demo/ly/img/bg_inventory.png',
         callback:function(){ 
         }
     };
