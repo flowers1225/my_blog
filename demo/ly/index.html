@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <meta name="copyright" content="Copyright (c) 2013."/>
+    <meta name="description" content=""/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css?3"/>
+</head>
+<body>
+<div class='m-wrap'>
+    <div class="swipe-wrap">
+        <div class="m-section m-section-index">
+            <div class="main">
+                <div class="title"></div>
+                <div class="txt"></div>
+                <div class="inventory"></div>
+                <div class="logo"></div>
+            </div>
+        </div>
+        <div class="m-section m-section-second">
+            <div class="main">
+                <div class="gift"></div>
+                <div class="content"></div>
+                <div class="logo"></div>
+            </div>
+        </div>
+        <div class="m-section m-section-third">
+            <div class="main">
+                 <div class="gift"></div>
+                 <div class="title"></div>
+                 <div class="content">
+                    <div class="txt"></div>
+                     <ul>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                         <li></li>
+                     </ul>
+                 </div>
+                 <div class="logo"></div>
+            </div>
+        </div>
+        <div class="m-section m-section-fourth">
+            <div class="main">
+                <div class="gift"></div>
+                <div class="title"></div>
+                <div class="time"></div>
+                <div class="address"></div>
+                <div class="btn-yue"></div>
+                <div class="logo"></div>
+            </div>
+        </div>
+        <div class="m-section m-section-fifth">
+            <div class="main">
+                <div class="gift"></div>
+                <div class="txt">您是第99999位预约的朋友</div>
+                <div class="msg-form">
+                    <div class="item">
+                        <input type="text" placeholder="请输入您的名字">
+                    </div>
+                    <div class="item">
+                        <input type="text" placeholder="请输入你的2014最想收到的礼物">
+                    </div>    
+                </div>
+                <div class="btn-share"></div>
+                <div class="logo"></div>
+            </div>
+            <div class="download">
+                    <a href=""></a>
+                </div>
+        </div>
+    </div>     
+</div>
+<script src="js/lib/zepto.js"></script>
+<script src="js/lib/swipe_vertical.js"></script>
+<script src="js/s.js?5"></script>
+<script type="text/javascript">
+    //微信分享回调
+    (function () {
+
+        var onBridgeReady = function () {
+            WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                WeixinJSBridge.invoke('sendAppMessage', {
+                    "appid": "",
+                    "img_url": weixinData.imgUrl,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": weixinData.link,
+                    "desc": weixinData.desc,
+                    "title": weixinData.title
+                }, function (res) {
+                    (weixinData.callback)();
+                });
+            });
+            WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                WeixinJSBridge.invoke('shareTimeline', {
+                    "img_url": weixinData.imgUrl,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": weixinData.link,
+                    "desc": weixinData.desc,
+                    "title": weixinData.desc
+                }, function (res) {
+                    (weixinData.callback)();
+                });
+            });
+            WeixinJSBridge.on('menu:share:weibo', function (argv) {
+                WeixinJSBridge.invoke('shareWeibo', {
+                    "content": weixinData.desc,
+                    "url": weixinData.link
+                }, function (res) {
+                    (weixinData.callback)();
+                });
+            });
+            WeixinJSBridge.on('menu:share:facebook', function (argv) {
+                WeixinJSBridge.invoke('shareFB', {
+                    "img_url": weixinData.imgUrl,
+                    "img_width": "120",
+                    "img_height": "120",
+                    "link": weixinData.link,
+                    "desc": weixinData.desc,
+                    "title": weixinData.title
+                }, function (res) {
+                    (weixinData.callback)();
+                });
+            });
+        };
+        if (document.addEventListener) {
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }
+        else if(document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+        }
+    })();
+</script>
+</body>
+</html>
