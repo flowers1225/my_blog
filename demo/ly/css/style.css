@@ -85,6 +85,31 @@ body, html{
     background: url(../img/logo.png) no-repeat;
     background-size: 90px auto;
 }
+/*加载*/
+.m-load{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 99;
+    display: -webkit-box;
+    -webkit-box-pack:center; 
+    -webkit-box-align:center; 
+}
+.m-load .load-spinner{
+    width:42px;
+    height:42px;
+    animation: spinner 1s linear infinite;
+    -webkit-animation: spinner 1s linear infinite;
+}
+@-webkit-keyframes spinner {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
 .m-section-index{
     background: #f63137 url(../img/bg_index.jpg) no-repeat bottom center;
     background-size: cover;

@@ -14,6 +14,7 @@
 
     var swipe = null;
     var sugar = null;
+    var imageLoader = new LoadImages();
 
     function pageControl(index,elem){
         
@@ -24,7 +25,7 @@
         
         if($(elem).hasClass('m-section-fourth')&& !$(elem).hasClass('already-init')){
             $(elem).addClass('already-init');
-            
+
             $('.btn-yue').on('click',function(e){
                 swipe.next();
             })
@@ -50,18 +51,34 @@
 
         weixinData.desc= '我叫'+name+'!我要的礼物是'+ly+'!快来送我吧！';
     }
+    //添加其他loading的内容
+    var preloadimgs = [
+        './img/bg_index.jpg',
+        './img/bg_inventory.png',
+        './img/index_txt.png',
+        './img/gift_3.png'
+    ];
 
     var init = function(){
-
-        sugar = new Sugar();
-        sugar.fireIn($('.m-section-index'));
         
-        //初始化swipe
-    	swipe = Swipe(document.querySelector('.m-wrap'),{
-            continuous: false,
-            callback: pageControl,
-            transitionEnd: function(index, elem) {}
-       	});
+        imageLoader.load(preloadimgs);
+
+        imageLoader.addEventListener('onLoad', function(){
+        
+            $('.m-load').remove();
+
+            //初始化rotate
+            sugar = new Sugar();
+            sugar.fireIn($('.m-section-index'));
+            
+            //初始化swipe
+            swipe = Swipe(document.querySelector('.m-wrap'),{
+                continuous: false,
+                callback: pageControl,
+                transitionEnd: function(index, elem) {}
+            });
+        
+        });    
 	}
 
     init();
