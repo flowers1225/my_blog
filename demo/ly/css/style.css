@@ -1,4 +1,4 @@
-/* reset */
+﻿/* reset */
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
@@ -84,6 +84,31 @@ body, html{
     height: 27px;
     background: url(../img/logo.png) no-repeat;
     background-size: 90px auto;
+}
+/*加载*/
+.m-load{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 99;
+    display: -webkit-box;
+    -webkit-box-pack:center; 
+    -webkit-box-align:center; 
+}
+.m-load .load-spinner{
+    width:42px;
+    height:42px;
+    animation: spinner 1s linear infinite;
+    -webkit-animation: spinner 1s linear infinite;
+}
+@-webkit-keyframes spinner {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(360deg)
+    }
 }
 .m-section-index{
     background: #f63137 url(../img/bg_index.jpg) no-repeat bottom center;
@@ -343,7 +368,27 @@ body, html{
     background: url(../img/l_download.png) no-repeat;
     background-size: 188px auto;
 }
-/* iphone4 特殊处理  */
+.m-share-mask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99;
+}
+.m-share-mask .tips {
+    position: absolute;
+    width: 233px;
+    height: 100px;
+    top: 5px;
+    right: 10px;
+    background: url(../img/share_tips.png) no-repeat;
+    -webkit-background-size: 233px auto;
+    background-size: 233px auto;
+}
+/* iphone4 鐗规畩澶勭悊  */
 @media only screen and (min-width:320px) and (max-height:460px) and (orientation:portrait) {
     /*index*/
     .m-section-index .main .title{
@@ -402,5 +447,120 @@ body, html{
         margin: 15px auto 0;
     }
 }
+.m-section .gift.animation{
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+}
 
+.animation{
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-delay:.1s
+}
+.animation-delay800{
+    -webkit-animation-delay: .6s;
+}
+.animation-delay1000{
+    -webkit-animation-delay: .8s;
+}
+.animation-delay1200{
+    -webkit-animation-delay: 1s;
+}
+.animation-delay1400{
+    -webkit-animation-delay: 1.2s;
+}
+.animation-delay1600{
+    -webkit-animation-delay: 1.4s;
+}
+.animation-delay1800{
+    -webkit-animation-delay: 1.6s;
+}
 
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+/* fadeInUp */
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 200%, 0);
+        transform: translate3d(0, 200%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+/* fadeIn */
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+.skewIn {
+     -webkit-animation-name: skewIn;
+    animation-name: skewIn;
+}
+/* skewIn */
+@-webkit-keyframes skewIn {
+    from {
+        opacity: 1;
+        -webkit-transform: rotateY(0deg);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: rotateY(360deg);
+    }
+}
+.fadeRight {
+     -webkit-animation-name: fadeRight;
+    animation-name: fadeRight;
+}
+/* fadeRight */
+@-webkit-keyframes fadeRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(50%,0,0);
+        transform: translate3d(50%,0,0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+.fadeLeft {
+     -webkit-animation-name: fadeLeft;
+    animation-name: fadeLeft;
+}
+/* fadeLeft */
+@-webkit-keyframes fadeLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(-50%,0,0);
+        transform: translate3d(-50%,0,0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
