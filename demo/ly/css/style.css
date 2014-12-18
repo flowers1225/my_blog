@@ -320,7 +320,7 @@ body, html{
 }
 .m-section-fifth .main .msg-form .item input::-webkit-input-placeholder{
     color: #ff8987;
-    line-height: normal;
+    line-height: 34px;
     text-align: center;
 }
 .m-section-fifth .main .btn-share{
