@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>background-size</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <meta name="copyright" content="Copyright (c) 2013."/>
+    <meta name="description" content=""/>
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        *{margin:0;padding:0;}
+        .m-wrap{
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        .m-section{
+            width: 800px;
+            height: auto;
+            border:1px solid #000;
+            padding: 10px;
+            margin: 0 auto 20px;
+        }
+        .m-section .title{
+            font-size: 18px;
+            text-align: center;
+            line-height: 80px;
+        }
+        .m-section-info .title{
+            width: 100%;
+            font-size: 38px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .m-section .content{
+            display: -webkit-box;
+            -webkit-box-align:center;
+            -webkit-box-pack:justify;
+            -webkit-box-orient:horizontal;
+        }
+        .m-section .content .box{
+            width: 240px;
+            height: 300px;
+            border: 1px solid red;
+        }
+        .m-section .content .box.box-first{
+            background: url(img/pic_nocra_boy_1.jpg) no-repeat center; 
+        }
+        .m-section .content .box.box-second{
+            background: url(img/webwxgetmsgimg.jpg) no-repeat center; 
+        }
+        .m-section .content .box.box-third{
+            background: url(img/coder_shareCard_1.png) no-repeat center; 
+        }
+        
+        .m-section-number .content-first .box.box-first{
+            background-size: 113px 113px;
+        }
+        .m-section-number .content-first .box.box-second{
+            background-size: 287px 167px;
+        }
+        .m-section-number .content-first .box.box-third{
+            background-size: 142px 243px;
+        }
+        
+        .m-section-number .content-second .box.box-first{
+            background-size:100% auto;
+        }
+        .m-section-number .content-second .box.box-second{
+            background-size:100% auto;
+        }
+        .m-section-number .content-second .box.box-third{
+            background-size:100% auto;
+        }
+
+        .m-section-contain .content-third .box.box-first{
+            background-size:auto 100%;
+        }
+        .m-section-contain .content-third .box.box-second{
+            background-size:auto 100%;
+        }
+        .m-section-contain .content-third .box.box-third{
+            background-size:auto 100%;
+        }
+
+        .m-section-cover .content .box.box-first{
+            background-size:cover;
+        }
+        .m-section-cover .content .box.box-second{
+            background-size:cover;
+        }
+        .m-section-cover .content .box.box-third{
+            background-size:cover;
+        }
+        
+        .m-section-contain .content .box.box-first{
+            background-size:contain;
+        }
+        .m-section-contain .content .box.box-second{
+            background-size:contain;
+        }
+        .m-section-contain .content .box.box-third{
+            background-size:contain;
+        }
+
+        
+    </style>
+</head>
+<body>
+<div class='m-wrap'>
+    <div class="m-section-info">
+        <div class="title">background-size使用Demo</div>
+    </div>
+    <div class="m-section m-section-number">
+        <div class="title">1、使用数值/2</div>
+        <div class="content content-first">
+            <div class="box box-first"></div>
+            <div class="box box-second"></div>
+            <div class="box box-third"></div>
+        </div>
+        <div class="title">2、使用数值 w=100% h=auto</div>
+        <div class="content content-second">
+            <div class="box box-first"></div>
+            <div class="box box-second"></div>
+            <div class="box box-third"></div>
+        </div>
+        <div class="title">3、使用数值 w=auto h=100%</div>
+        <div class="content content-third">
+            <div class="box box-first"></div>
+            <div class="box box-second"></div>
+            <div class="box box-third"></div>
+        </div>
+    </div>
+    <div class="m-section m-section-cover">
+        <div class="title">4、使用cover</div>
+        <div class="content">
+            <div class="box box-first"></div>
+            <div class="box box-second"></div>
+            <div class="box box-third"></div>
+        </div>
+    </div>
+    <div class="m-section m-section-contain">
+        <div class="title">5、使用contain</div>
+        <div class="content">
+            <div class="box box-first"></div>
+            <div class="box box-second"></div>
+            <div class="box box-third"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
