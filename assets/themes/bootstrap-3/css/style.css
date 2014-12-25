@@ -15,7 +15,11 @@
 
 /* Jekyll Bootstrap Colors */
 h1, h2, h3, h4 {
-  color: #f22430;
+  color: #428BCA;
+}
+
+.demo-link{
+  color: #f00;
 }
 #footer {
   height: auto;

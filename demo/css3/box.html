@@ -54,6 +54,15 @@
             height: 80px;
             line-height: 80px;
         }
+        
+        .m-section.m-section-align.vertical .content .box-first,
+        .m-section.m-section-align.vertical .content .box-third{
+            width: 80px;
+        }
+        .m-section.m-section-align.vertical .content{
+            -webkit-box-orient:vertical;
+            height: auto;
+        }
         .m-section.m-section-align .content.content-start{
             -webkit-box-align:start;
         }
@@ -67,6 +76,16 @@
         .m-section.m-section-pack .content{
             border: 1px solid red;
         }
+        .m-section.m-section-pack.vertical .content{
+            -webkit-box-orient:vertical;
+            height: 400px;
+            border: 1px solid red;
+        }
+        .m-section.m-section-pack.vertical .content .box-first,
+        .m-section.m-section-pack.vertical .content .box-third{
+            width: 80px;
+        }
+
         .m-section.m-section-pack .content.content-start{
             -webkit-box-pack:start;
         }
@@ -79,6 +98,50 @@
         .m-section.m-section-pack .content.content-justify{
             -webkit-box-pack:justify;
         }
+        /*box-flex*/
+        .m-section.m-section-flex .content.content-no .box{
+            width: auto;
+            height: auto;
+        }
+        .m-section.m-section-flex .content.content-yes .box{
+            width: auto;
+            height: auto;
+            padding: 0 10px;
+        }
+        .m-section.m-section-flex .content .box-first{
+            -webkit-box-flex:1
+        }
+        .m-section.m-section-flex .content .box-second{
+            -webkit-box-flex:1
+        }
+        .m-section.m-section-flex .content .box-third{
+            -webkit-box-flex:2
+        }
+
+        /*box-ordinal-group*/
+        .m-section.m-section-ordinal .content-yes .box-first{
+            -webkit-box-ordinal-group:3
+        }
+        .m-section.m-section-ordinal .content-yes .box-second{
+            -webkit-box-ordinal-group:1
+        }
+        .m-section.m-section-ordinal .content-yes .box-third{
+            -webkit-box-ordinal-group:2
+        }
+        
+        /*box-lines*/
+        .m-section.m-section-lines .content{
+            border:1px solid #000;
+            padding: 5px;
+            width: 280px;
+        }
+        .m-section.m-section-lines .content.content-single{
+           -webkit-box-lines:single; 
+        }
+        .m-section.m-section-lines .content.content-multiple{
+            -webkit-box-lines:multiple
+        }
+
         .m-section .content .box{
             width: 100px;
             height: 100px;
@@ -103,7 +166,8 @@
     <div class="m-section-info">
         <div class="title">CSS3盒子模型的基本使用</div>
     </div>
-    <div class="m-section m-section-orient">
+    <!--box-orient-->
+    <div class="m-section m-section-orient" id="orient">
         <div class="title">元素的排列方式(box-orient)</div>
         <div class="txt">1、垂直</div>
         <div class="content content-vertical">
@@ -118,8 +182,9 @@
             <div class="box box-third">3</div>
         </div>
     </div>
-    <div class="m-section m-section-align">
-        <div class="title">元素的垂直对齐方式(box-align)</div>
+    <!--box-align horizontal时-->
+    <div class="m-section m-section-align" id="align-1">
+        <div class="title">设置horizontal时元素的对齐方式(box-align)</div>
         <div class="txt">1、居上</div>
         <div class="content content-start">
             <div class="box box-first">1</div>
@@ -139,8 +204,31 @@
             <div class="box box-third">3</div>
         </div>
     </div>
-    <div class="m-section m-section-pack">
-        <div class="title">元素的垂水平对齐方式(box-pack)</div>
+    <!--box-align vertical时-->
+    <div class="m-section m-section-align vertical" id="pack-2">
+        <div class="title">设置vertical时元素的对齐方式(box-align)</div>
+        <div class="txt">1、居左</div>
+        <div class="content content-start">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">2、居中</div>
+        <div class="content content-center">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>            
+        </div>
+        <div class="txt">3、居右</div>
+        <div class="content content-end">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+    </div>
+    <!--box-pack horizontal时-->
+    <div class="m-section m-section-pack" id="pack-1">
+        <div class="title">设置horizontal时元素的对齐方式(box-pack)</div>
         <div class="txt">1、居左</div>
         <div class="content content-start">
             <div class="box box-first">1</div>
@@ -161,6 +249,82 @@
         </div>
         <div class="txt">4、分散</div>
         <div class="content content-justify">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+    </div>
+    <!--box-pack vertical时-->
+    <div class="m-section m-section-pack vertical" id="pack-2">
+        <div class="title">设置vertical时元素的对齐方式(box-pack)</div>
+        <div class="txt">1、居上</div>
+        <div class="content content-start">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">2、居中</div>
+        <div class="content content-center">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">3、居下</div>
+        <div class="content content-end">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">4、分散</div>
+        <div class="content content-justify">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+    </div>
+    <!--box-flex-->
+    <div class="m-section m-section-flex" id="flex">
+        <div class="title">元素分配父容器剩余空间(box-flex)</div>
+        <div class="txt">1、未设置子元素内容</div>
+        <div class="content content-no">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">2、设置padding=0 10px后</div>
+        <div class="content content-yes">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+    </div>
+    <!--box-ordinal-->
+    <div class="m-section m-section-ordinal" id="ordinal">
+        <div class="title">元素的显示顺序方式(box-ordinal-group)</div>
+        <div class="txt">1、未设置box-ordinal-group</div>
+        <div class="content content-no">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">2、设置box-ordinal-group</div>
+        <div class="content content-yes">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+    </div>
+    <!--box-lines-->
+    <div class="m-section m-section-lines" id="lines">
+        <div class="title">元素是否换行的显示(box-lines)</div>
+        <div class="txt">1、设置single</div>
+        <div class="content content-single">
+            <div class="box box-first">1</div>
+            <div class="box box-second">2</div>
+            <div class="box box-third">3</div>
+        </div>
+        <div class="txt">2、设置multiple</div>
+        <div class="content content-multiple">
             <div class="box box-first">1</div>
             <div class="box box-second">2</div>
             <div class="box box-third">3</div>
