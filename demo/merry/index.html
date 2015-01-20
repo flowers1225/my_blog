@@ -36,15 +36,12 @@
 	</div>
 
 <script src="js/skrollr.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/skrollr.mobile.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	 window.onload = function() {
 		document.getElementById("preloader").style.display = 'none';
 		skrollr.init({
-			forceHeight: false,
-			mobileCheck: function() {
-			    return (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera);
-			},
-			mobileDeceleration:0.004
+			forceHeight: false
 		});
 
 		console.log(skrollr);
