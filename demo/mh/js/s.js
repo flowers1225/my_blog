@@ -7,9 +7,11 @@
     var imageLoader = new LoadImages();
 
     function pageControl(index,elem){
-        
-        sugar.fireOut(elem);
-        sugar.fireIn(elem);
+               
+        setTimeout(function(){
+            sugar.fireOut(elem);
+            sugar.fireIn(elem);            
+        },300);
 
     }
 
