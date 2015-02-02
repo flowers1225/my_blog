@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+<meta name="format-detection" content="telephone=no,address=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>截取地址栏参数</title>
+<style>
+	*{margin: 0;padding: 0;}
+	html,body{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	.warp{
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		overflow: hidden;
+	}
+	.section{
+		position: absolute;
+		width: 100%;
+		top:30%;
+	}
+	.btn{
+		width: 40px;
+		padding: 0 10px;
+		line-height: 20px;
+		border: 1px solid #000;
+		margin:10px auto;
+		cursor: pointer;
+	}
+</style>
+<body>
+<div class="warp">
+	<div class="section">
+		<div class="txt">例如 在地址后面输入?a=1&amp;b=2,然后回车显示a的值</div>
+		<div class="btn" id="J_btn">确定</div>
+		<div class="value"></div>
+	</div>	
+</div>
+
+<script>
+	;(function(){
+		
+		function ClipArguments(){
+			var name,value;
+			var str = window.location.href;
+			var num = str.indexOf('?');
+
+			str = str.substr(num+1); //获取问号后面内容
+
+			var arrtmp = str.split('&');
+
+			for(var i = 0,arrtmps = arrtmp.length; i < arrtmps; i++ ){
+
+				num = arrtmp[i].indexOf('=');
+
+				if(num > 0){
+					//参数有赋值
+					name = arrtmp[i].substring(0,num);
+					value = arrtmp[i].substr(num+1);
+					this[name] = value;
+				} 
+			}
+			
+		}
+
+		var c = new ClipArguments();
+		if(c.a||c.b){
+			document.getElementsByClassName('value')[0].innerHTML = c.a+'/'+c.b;
+		}else{
+			document.getElementsByClassName('value')[0].innerHTML = '后面未输入值';
+		}
+
+	})();
+</script>
+</body>
+</html>
