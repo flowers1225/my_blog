@@ -33,7 +33,6 @@
         
             $('.m-load').remove();
 
-            //初始化rotate
             sugar = new Sugar();
             sugar.fireIn($('.m-section-index'));
             
