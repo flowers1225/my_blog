@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Animation模仿gif动画Demo</title>
+ 	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+	<style>
+		body,html{
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background-color: #000;
+		}
+		.title{
+			position: absolute;
+			top:50%;
+			margin-top: -200px;
+			color: #fff;
+			width: 100%;
+            font-size: 38px;
+            text-align: center;
+		}
+		.m-gif{
+			position: relative;
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			top:50%;
+			display: -webkit-box;
+			-webkit-box-align:center;
+			-webkit-box-pack:center;
+			margin-top: -101px;
+			border: 1px solid #fff;
+		}
+		.m-gif .inner{
+			background: url(music.png) no-repeat;
+			width: 18px;
+			height: 13px;
+			-webkit-animation:gif 1s  step-start infinite;
+			-webkit-animation-play-state:running;
+			animation-play-state:running;
+		}
+		.m-gif.pause .inner{
+			-webkit-animation-play-state:paused;
+			animation-play-state:paused;
+		}
+		.m-btn{
+			position: relative;
+			margin: 0 auto;
+			width: 200px;
+			color: #fff;
+			top:50%;
+			margin-top:20px;
+			display: -webkit-box;
+			-webkit-box-pack:justify;
+		}
+		.m-btn > div{
+			border: 1px solid #fff;
+			width: 50px;
+			text-align: center;
+			line-height: 50px;
+			cursor: pointer;
+			-webkit-user-select:none;
+		}
+		@-webkit-keyframes gif{
+			from{
+				background-position: 0 0;
+			}
+			10%{
+				background-position: -25px 0;
+			}
+			20%{
+				background-position: -50px 0;
+			}
+			30%{
+				background-position: -75px 0;
+			}
+			40%{
+				background-position: -100px 0;
+			}
+			50%{
+				background-position: 0px -19px;
+			}
+			60%{
+				background-position: -25px -19px
+			}
+			70%{
+				background-position: -50px -19px
+			}
+			80%{
+				background-position: -75px -19px
+			}
+			90%{
+				background-position: -100px -19px
+			}
+			to{
+				background-position: 0 0;
+			}
+		}
+	</style>
+</head>	
+ 
+<body>
+	<div class="title">Animation模仿gif动画Demo</div>
+	<div class="m-gif">
+		<div class="inner"></div>
+	</div>
+	<div class="m-btn">
+		<div class="btn-play" id="J_btn_play">播放</div>
+		<div class="btn-pause" id="J_btn_pause">暂停</div>
+	</div>
+	<script>
+	var mGif = document.getElementsByClassName('m-gif')[0];
+	var playBtn = document.getElementById('J_btn_play');
+	var pauseBtn = document.getElementById('J_btn_pause');
+
+	playBtn.onclick = function(e){
+		mGif.className = 'm-gif';
+	}
+
+	pauseBtn.onclick = function(e){
+		if(mGif.className.indexOf('pause') == -1){
+			mGif.className += ' pause';
+		}
+	}
+	</script>
+</body>
+</html>
