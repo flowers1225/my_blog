@@ -121,8 +121,8 @@ body, html{
     background-size: 26px 27px;
     animation: Move 1.5s linear infinite;
     -webkit-animation: Move 1.5s linear infinite;
-    z-index: 10;
 }
+
 @-webkit-keyframes Move {
     form{
         -webkit-transform:translate3d(0,0,0);
