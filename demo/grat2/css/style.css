@@ -110,6 +110,18 @@ body, html{
         -webkit-transform: rotate(360deg)
     }
 }
-.m-section-scene{
-    background-color: #f00;
+.m-section .tips-up {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    width: 26px;
+    height: 27px;
+    margin-left: -13px;
+    background: url(../img/tips_up.png) no-repeat center;
+    background-size: 26px 27px;
 }
+.m-section-scene {
+    background: url(../img/bg_scene.jpg) no-repeat center;
+    background-size: cover;
+}
+
