@@ -115,7 +115,7 @@ html,body {
 	z-index: 10;
 }
 @-webkit-keyframes move {
-    form{
+    from{
         -webkit-transform:translate3d(0,0,0);
     }
     50%{
@@ -237,7 +237,7 @@ html,body {
     -webkit-animation:roate 8s linear infinite;
 } 
 @-webkit-keyframes roate {
-    form{
+    from{
         -webkit-transform:rotate(0deg);
     }
 

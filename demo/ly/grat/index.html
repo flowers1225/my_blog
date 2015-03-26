@@ -10,7 +10,7 @@
     <meta name="copyright" content="Copyright (c) 2015."/>
     <meta name="description" content=""/>
     <meta name="format-detection" content="telephone=no">
-    <link rel="stylesheet" href="css/style1.css?3"/>
+    <link rel="stylesheet" href="css/style1.css?343"/>
 </head>
 <body>
     <div class="m-load">
@@ -19,10 +19,9 @@
     <div class="m-wrap" id="vertical">
         <div class="swipe-wrap">
             <div class="m-section m-section-scene">
-                <div class="ns-bg"></div>
-                <div class="tips-up">11111111111111111111111</div>
+                <div class="tips-up"></div>
             </div>
-            <!--<div class="swipe-slide index-box">
+            <div class="swipe-slide index-box">
                 <div class="logo"></div>
                 <div class="txt"></div>
                 <div class="tips-up"></div>
@@ -37,7 +36,7 @@
             </div>
             <div class="swipe-slide activity-box">
                  <div class="swipe-container swipe-horizontal" id="horizontal">
-                     <div class="swipe-pagination"></div>
+                     <!-- <div class="swipe-pagination"></div> -->
                     <div class="swipe-wrapper">
                         <div class="swipe-slide activity-box-1">
                             <div class="title"></div>
@@ -82,7 +81,7 @@
             			<input class="btn" type="button" value="" id="forBtn">
             		</div>
             	</form>
-            </div>-->
+            </div>
         </div>
     </div>
     <script src="js/lib/zepto.js"></script>
@@ -113,11 +112,11 @@
 
             //alert($('.scene-box').width());
             //alert($('.scene-box').height());
-            // mySwipe1 = new Swipe(document.getElementById('horizontal'), {
-            //     continuous: false,
-            //     callback: function(index, elem) {},
-            //     transitionEnd: function(index, elem) {}
-            // });
+            mySwipe1 = new Swipe(document.getElementById('horizontal'), {
+                continuous: false,
+                callback: function(index, elem) {},
+                transitionEnd: function(index, elem) {}
+            });
         
         });    
     </script>
