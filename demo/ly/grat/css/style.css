@@ -137,7 +137,6 @@ html,body {
     background: url(../img/bg_scene.jpg) no-repeat center;
     background-size: 100px 100px;*/
     background-color: #000;
-    z-index: 999;
 }
 .index-box {
     background: #211308;
