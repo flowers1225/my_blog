@@ -122,17 +122,6 @@ body, html{
     z-index:10;
 }
 
-@-webkit-keyframes Move {
-    form{
-        -webkit-transform:translate3d(0,0,0);
-    }
-    50%{
-        -webkit-transform:translate3d(0,-10px,0);
-    }
-    to{
-        -webkit-transform:translate3d(0,0,0);
-    }
-}
 .m-section-scene {
     background: url(../img/bg_scene.jpg) no-repeat center;
     background-size: cover;
