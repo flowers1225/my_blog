@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<title>Document</title>
+	<style type="text/css">
+		html,body{
+			margin:0;
+			padding:0;
+			width: 100%;
+			height: 100%;
+		}
+		.m-canvas-erasure {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		.m-canvas-erasure .bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+		}
+		.m-canvas-erasure .bg img {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="m-canvas-erasure">
+		<div class="bg">
+			<img src="img/scrape_11.jpg" alt="">
+		</div>
+	</div>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+	var TD = TD || {};
+
+	TD.erasure = function(elBox, opt){
+		var that = this;
+		var coverEl = null;
+		var coverImg = null;
+		var canvasW = null;
+		var canvasH = null;
+		var ctx = null;
+		var regImg = /(?!.*jpg|.*png|.*bmp)^.*$/;
+
+		var cover = opt.cover || '#ccc';
+		var position = opt.position || 'relative';
+		var count = 0;
+
+		//初始化
+		var init = function(){
+			var el = elBox;
+			el.css({
+				'position' : position
+			});			
+			coverEl = $('<canvas>');
+			ctx = coverEl.get(0).getContext('2d');
+			canvasW = el.width() * 2;
+			canvasH = el.height() * 2;
+
+			coverEl.attr('width', canvasW);
+			coverEl.attr('height', canvasH);
+			coverEl.css({
+				'position': 'absolute',
+				'z-index': '2',
+				'top': '0',
+				'left': '0',
+				'width': '100%',
+				'height': '100%'
+			});			
+			if(!regImg.test(cover)){
+				coverImg = new Image();
+				coverImg.onload = imgonload;
+				coverImg.src = cover;
+
+				that.preFile();
+			}						
+			addCover();
+			el.append(coverEl);
+		}
+
+		//图片载入完成
+		var imgonload = function(){
+			addCover();
+		}
+
+		//添加遮罩层
+		var addCover = function(){
+			if(!regImg.test(cover)){
+				ctx.drawImage(coverImg, 0, 0, canvasW, canvasH);
+			}else{
+				ctx.fillStyle = cover;
+				ctx.fillRect(0, 0, canvasW, canvasH);
+			}			
+			tapClip();
+		}
+
+		//擦除
+		var tapClip = function(){
+			var lineWidth = opt.lineWidth || 50;
+			var percent = opt.percent || 30;
+
+			var touchstartEvent = function(e){
+				e.preventDefault();
+
+				var e0 = e.targetTouches[0];
+				var elPos = coverEl.offset();
+				var x = (e0.clientX - elPos.left) * 2;
+				var y = (e0.clientY - elPos.top) * 2;
+
+				//绘制擦除图形
+				ctx.save();
+				ctx.globalCompositeOperation = "destination-out";
+				ctx.beginPath();
+				ctx.arc(x, y, lineWidth, 0, 2*Math.PI);
+				ctx.fill();
+				ctx.restore();
+
+				$(document).on('touchmove', touchmoveEvent);
+				$(document).on('touchend', touchendEvent);
+				coverEl.off('touchstart', touchstartEvent);
+			}
+
+			var touchmoveEvent = function(e){
+				e.preventDefault();
+
+				var e0 = e.targetTouches[0];
+				var elPos = coverEl.offset();
+				var x = (e0.clientX - elPos.left) * 2;
+				var y = (e0.clientY - elPos.top) * 2;
+
+				//绘制擦除图形
+				ctx.save();
+				ctx.globalCompositeOperation = "destination-out";
+				ctx.beginPath();
+				ctx.arc(x, y, lineWidth, 0, 2*Math.PI);
+				ctx.fill();
+				ctx.restore();
+
+			}
+
+			var touchendEvent = function(e){
+				e.preventDefault();
+
+				var imgData = ctx.getImageData(0, 0, canvasW, canvasH);
+				var dd = 0;
+				var jump = 30;
+				var i;
+
+				for (var x = 0; x < imgData.width; x+=jump){
+					for (var y = 0; y < imgData.height; y+=jump){
+						i = (y*imgData.width + x) * 4;  
+						//判断A不为0，>0及没被擦除的。
+						if (imgData.data[i+3] > 0) { 
+							dd++;
+						}; 
+					}
+				}
+				//计算没被擦除的占总数的多少
+				if (dd*jump*jump/(imgData.width*imgData.height) < percent/100) {
+					//这里执行回调
+					coverEl.css({
+						'opacity': 0,
+						'-webkit-transition': 'opacity 300ms linear'
+					});
+					coverEl.on('webkitTransitionEnd', function(e){
+						$(this).remove();
+						opt.callback && opt.callback();
+					});
+				};
+				//解除move end绑定
+				$(document).off('touchmove', touchmoveEvent);
+				$(document).off('touchend', touchendEvent);
+				coverEl.on('touchstart', touchstartEvent);
+			}
+
+			if(count == 0){
+				coverEl.on('touchstart', touchstartEvent);
+				count++;
+			}
+			
+		}
+
+		//图片cover加载
+		this.preFile = function(){
+			ctx.fillStyle = '#ddd';
+			ctx.fillRect(0, 0, canvasW, canvasH);
+		}
+
+		//改变尺寸更新  
+		//造成重复事件绑定
+		this.upData = function(){
+			var el = elBox;
+
+			canvasW = el.width() * 2;
+			canvasH = el.height() * 2;
+			coverEl.attr('width', canvasW);
+			coverEl.attr('height', canvasH);
+			addCover();
+		}
+
+		init();
+	}
+
+	var erasure = new TD.erasure($('.m-canvas-erasure'),{
+		cover: 'img/scrape_2.jpg', //url，十六进制，rgba
+		lineWidth: 60,
+		percent: 30,
+		callback: function(){
+			console.log('成功');
+		}
+	});
+
+	$(window).on('resize', erasure.upData);
+
+	console.log(erasure);
+	</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<title>Document</title>
+	<style type="text/css">
+		html,body{
+			margin:0;
+			padding:0;
+			width: 100%;
+			height: 100%;
+		}
+		.m-canvas-erasure {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		.m-canvas-erasure .bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+		}
+		.m-canvas-erasure .bg img {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="m-canvas-erasure">
+		<div class="bg">
+			<img src="img/a2cc7cd98d1001e95af73797ba0e7bec55e7975a.jpg" alt="">
+		</div>
+	</div>
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+	<script type="text/javascript">
+		var TD = TD || {};
+		var opt = {
+			//这里应该可以传入image对象、url、十六位色值或者rgba色值
+			bg: 'scrape_2.jpg',
+			cover: 'scrape_1.jpg',
+			lineWidth: 60,
+			percent: 30,
+			callback: function(){
+				//当擦除成功时可以执行的回调
+			} 
+		}
+		TD.erasure = function(elBox, opt){
+			//这里写的很随意，有很多变量污染，还有很多很随意的对象属性被暴露出去了，怎么解决
+
+			this.ctx = null;
+
+			this.preFill = function(){
+				//这里可以做些菊花之类的东西
+				this.ctx = this.coverEl.get(0).getContext('2d');
+				this.ctx.fillStyle = '#d1d1d1';
+				this.ctx.fillRect(0, 0, this.canvasW, this.canvasH);
+			}
+
+			this.addImg = function(){
+				//底部那层图片
+				this.bgEl.attr('src', this.bg);
+			}
+
+
+			this.addCover = function(){
+				//cover层填充
+				this.ctx.drawImage(this.coverImg, 0, 0, this.canvasW, this.canvasH);
+				this.tapClip();
+			}
+
+			this.upData = function(){
+				var that = this;
+
+				setTimeout(function(){
+					that.canvasW = that.el.width() * 2;
+					that.canvasH = that.el.height() * 2;
+					that.coverEl.attr('width', that.canvasW);
+					that.coverEl.attr('height', that.canvasH);
+					that.addCover();
+				},500);
+			} 
+
+			this.tapClip = function(){
+				var that = this;
+
+				var lineWidth = opt.lineWidth || 50;
+				var percent = opt.percent || 30;
+
+				//擦除效果
+				var touchstartEvent = function(e){
+					e.preventDefault();
+					//没有做PC兼容
+					var e0 = e.targetTouches[0];
+					var elPos = that.coverEl.offset();
+					console.log(elPos);
+					var x = (e0.clientX - elPos.left) * 2;
+					var y = (e0.clientY - elPos.top) * 2;
+
+					that.ctx.save();
+					that.ctx.globalCompositeOperation = "destination-out";
+					that.ctx.beginPath();
+					that.ctx.arc(x, y, lineWidth, 0, 2*Math.PI);
+					that.ctx.fill();
+					that.ctx.restore();
+					
+					//注意绑定事件的时候要考虑怎么清楚，不能多次操作之后造成事件重复绑定
+					//touchmove事件一定要绑定在document上，否则鼠标移出画布之后会造成事件实效
+					$(document).on('touchmove', touchmoveEvent);
+					$(document).on('touchend', touchendEvent);
+					that.coverEl.off('touchstart', touchstartEvent);
+				}
+
+				var touchmoveEvent = function(e){
+					e.preventDefault();
+
+					var e0 = e.targetTouches[0];
+					var elPos = that.coverEl.offset();
+					var x = (e0.clientX - elPos.left) * 2;
+					var y = (e0.clientY - elPos.top) * 2;
+
+					that.ctx.save();
+					that.ctx.globalCompositeOperation = "destination-out";
+					that.ctx.beginPath();
+					that.ctx.arc(x, y, lineWidth, 0, 2*Math.PI);
+					that.ctx.fill();
+					that.ctx.restore();
+				}
+
+				var touchendEvent = function(e){
+					e.preventDefault();
+
+					var imgData = that.ctx.getImageData(0, 0, that.canvasW, that.canvasH);
+					var dd = 0;
+					//这里是为了插点式探测图片提高性能?
+					var jump = 30;
+					var i;
+					//console.log(imgData); //imgData.data 代表RBGA数组
+					//这里的原理你清楚了么，回头我要问你的
+					for (var x = 0; x < imgData.width; x+=jump){
+						for (var y = 0; y < imgData.height; y+=jump){
+							i = (y*imgData.width + x) * 4;  
+							//判断A不为0，>0及没被擦除的。
+							if (imgData.data[i+3] > 0) { 
+								dd++;
+							}; 
+						}
+					}
+					//计算没被擦除的占总数的多少
+					if (dd*jump*jump/(imgData.width*imgData.height) < percent/100) {
+						//这里执行回调
+						that.coverEl.css({
+							'opacity': 0,
+							'-webkit-transition': 'opacity 300ms linear'
+						});
+						that.coverEl.on('webkitTransitionEnd', function(e){
+							$(this).remove();
+							opt.callback && opt.callback();
+							//console.log('成功！');
+						});
+					};
+
+					$(document).off('touchmove', touchmoveEvent);
+					$(document).off('touchend', touchendEvent);
+					that.coverEl.on('touchstart', touchstartEvent);
+				}
+
+
+				this.ctx.globalCompositeOperation = 'destination-out';
+
+				this.coverEl.on('touchstart', touchstartEvent);
+
+			}
+
+			this.init = function(){
+				var that = this;
+
+				var cover = opt.cover || '#d1d1d1';
+				var count = 0;
+
+				var imgonload = function(){
+					
+					that.addCover();
+					// if (count == 1) {
+					// 	//执行图片加载完成行为
+					// 	that.addImg();
+					// 	that.addCover();
+					// }
+					// count++;
+				}
+
+				this.el = elBox;
+				//暂时未做纯色处理
+				//this.bg = opt.bg || '#ffffff';
+				//this.cover = opt.cover || '#d1d1d1';
+				//lineWidth = opt.lineWidth || 50;
+				//percent = opt.percent || 30;
+
+				this.el.css({
+					'position': 'relative'
+				});
+
+				//处理canvas背景
+				this.coverEl = $('<canvas>');
+				//按2倍去做才能适配高清手机
+				this.canvasW = this.el.width() * 2;
+				this.canvasH = this.el.height() * 2;
+				this.coverEl.attr('width', this.canvasW);
+				this.coverEl.attr('height', this.canvasH);
+				this.coverEl.css({
+					'position': 'absolute',
+					'z-index': '2',
+					'top': '0',
+					'left': '0',
+					'width': '100%',
+					'height': '100%'
+				});
+				this.coverImg = new Image();
+				this.coverImg.onload = imgonload;
+				this.coverImg.src = cover;
+				
+				this.preFill();
+
+				this.el.append(this.coverEl);
+			}
+
+			this.init();
+		}
+
+		//附加题：当屏幕改变的时候可以考虑加一个refresh事件去更新画布和事件
+		//妈的，图片还有同源限制，想想看有没有办法可以解决
+		var erasure = new TD.erasure($('.m-canvas-erasure'), {
+			//在思考，这里的背景图是不是不应该整合到组件中
+			cover: 'img/f636afc379310a555214fc6cb54543a982261071.jpg',
+			lineWidth: 60,
+			percent: 30,
+			callback: function(){
+				//擦除成功
+				console.log('成功');
+			} 
+
+		});
+
+		$(window).on('resize', function(){
+			erasure.upData()
+		});
+
+		console.log(erasure);
+
+	</script>
+</body>
+</html>
