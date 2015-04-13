@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>邀请</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+    <meta name="copyright" content="Copyright (c) 2015."/>
+    <meta name="description" content=""/>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css?343"/>
+</head>
+<body>
+    <div class="m-load">
+        <img class="load-spinner" src="img/load.png" alt="">
+    </div>
+    <div class="m-wrap" id="vertical">
+        <div class="swipe-wrap">
+            <div class="m-section m-section-scene">
+                <div class="tips-up"></div>
+            </div>
+            <div class="swipe-slide index-box">
+                <div class="logo"></div>
+                <div class="txt"></div>
+                <div class="tips-up"></div>
+            </div>
+            <div class="swipe-slide introdu-box">
+                <div class="txt"></div>
+                <div class="round-center"></div>
+                <div class="round-txt-1"></div>
+                <div class="round-txt-2"></div>
+                <div class="round-txt-3"></div>
+                <div class="tips-up"></div>
+            </div>
+            <div class="swipe-slide activity-box">
+                 <div class="swipe-container swipe-horizontal" id="horizontal">
+                     <!-- <div class="swipe-pagination"></div> -->
+                    <div class="swipe-wrapper">
+                        <div class="swipe-slide activity-box-1">
+                            <div class="title"></div>
+                            <div class="txt"></div>
+                        </div>
+                        <div class="swipe-slide activity-box-2">
+                        	<div class="title"></div>
+                            <div class="txt"></div>
+                            <div class="txt-2">具体奖励金额请莅临现场询问德培利工作人员。</div>
+                        </div>
+                        <div class="swipe-slide activity-box-3">
+                        	<div class="title"></div>
+                            <div class="txt"></div>
+                           	<div class="txt-roll"></div>
+                        </div>
+                        <div class="swipe-slide activity-box-4">
+                        	<div class="title"></div>
+                            <div class="txt"></div>
+                            <div class="tips-up"></div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <div class="swipe-slide info-box">
+            	<div class="title"></div>
+            	<div class="map"></div>
+            	<div class="code"></div>
+            	<div class="txt"></div>
+            	<div class="btn" id="J_next_btn"></div>
+            </div>
+            <div class="swipe-slide msg-box">
+            	<div class="logo"></div>
+            	<form action="register.php">
+            		<div class="item">
+            			<input type="text" name="name" id="" required>
+            		</div>
+            		<div class="item">
+            			<input type="tel" name="phone" id=""  required>
+            		</div>
+            		<div id="postMsg" class="msg"></div>
+            		<div class="item">
+            			<input class="btn" type="button" value="" id="forBtn">
+            		</div>
+            	</form>
+            </div>
+        </div>
+    </div>
+    <script src="js/lib/zepto.js"></script>
+    <script src="js/lib/swipe.js"></script>
+    <script src="js/lib/swipe_vertical.js"></script>
+    <script src="js/lib/imageLoader.js"></script>
+    <script>
+        var mySwipe = null;
+        var mySwipe1 = null;
+        var imageLoader = new LoadImages();
+        var preloadimgs = [
+            './img/bg_scene.jpg',
+            './img/bg_activity.jpg',
+            './img/index_txt.png',
+            './img/logo.png'
+        ];
+        imageLoader.load(preloadimgs);
+
+        imageLoader.addEventListener('onLoad', function(){
+        
+            $('.m-load').remove();
+
+            mySwipe = new SwipeVertical(document.getElementById('vertical'), {
+                continuous: false,
+                callback: function(index, elem) {},
+                transitionEnd: function(index, elem) {}
+            });
+
+            //alert($('.scene-box').width());
+            //alert($('.scene-box').height());
+            mySwipe1 = new Swipe(document.getElementById('horizontal'), {
+                continuous: false,
+                callback: function(index, elem) {},
+                transitionEnd: function(index, elem) {}
+            });
+        
+        });    
+    </script>
+</body>
+</html>
