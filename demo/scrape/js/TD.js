@@ -9,7 +9,6 @@ TD.erasure = function(elBox, opt){
 	var canvasW = null;
 	var canvasH = null;
 	var ctx = null;
-
 	var cover = opt.cover || '#ccc';
 	var position = opt.position || 'relative';
 	var lineWidth = opt.lineWidth || 50;
@@ -42,7 +41,7 @@ TD.erasure = function(elBox, opt){
 		//判断传入的cover值是imgobject、rgba、十六进制、url
 		if(typeof cover == 'object'){
 			cover.onload = imgonload;
-			//that.preFill();
+			preFill();
 
 		}else if(cover.indexOf('rgba') != -1 || cover.indexOf('RGBA') != -1){
 			addCover();
@@ -53,18 +52,21 @@ TD.erasure = function(elBox, opt){
 			coverImg = new Image();
 			coverImg.onload = imgonload;
 			coverImg.src = cover;
-			//that.preFill();
+			preFill();
 		}
 		
 		el.append(coverEl);
 	}
 
-	//图片载入完成
+	//图片载入完成动作
 	var imgonload = function(){
-		opt.preloadback();
-		addCover();
+		opt.loadback && opt.loadback();
+	 	addCover();
 	}
-
+	var preFill = function(){
+		ctx.fillStyle = '#d1d1d1';
+		ctx.fillRect(0, 0, canvasW, canvasH);
+	}
 	//添加遮罩层
 	var addCover = function(){
 		//ctx.clearRect(0,0,canvasW,canvasH);
@@ -147,14 +149,6 @@ TD.erasure = function(elBox, opt){
 			//计算没被擦除的占总数的多少
 			if (dd*jump*jump/(imgData.width*imgData.height) < percent/100) {
 				//这里执行回调
-				// coverEl.css({
-				// 	'opacity': 0,
-				// 	'-webkit-transition': 'opacity 300ms linear'
-				// });
-				// coverEl.on('webkitTransitionEnd', function(e){
-				// 	$(this).remove();
-				// 	opt.callback && opt.callback();
-				// });
 				that.destroy();
 			};
 			//解除move end绑定
@@ -163,6 +157,7 @@ TD.erasure = function(elBox, opt){
 			coverEl.on('touchstart', touchstartEvent);
 		}
 
+		//改变尺寸是防止事件重复绑定
 		if(count == 0){
 			coverEl.on('touchstart', touchstartEvent);
 			count++;

@@ -13,8 +13,8 @@
 		}
 		.m-canvas-erasure {
 			position: relative;
-			width: 320px;
-			height: 320px;
+			width: 100%;
+			height: 100%;
 		}
 		.m-canvas-erasure .bg {
 			position: absolute;
@@ -78,7 +78,7 @@
 		</div>
 	</div>
 	
-	<div class="btn" id="J_btn_clear">清除</div>
+	<!-- <div class="btn" id="J_btn_clear">清除</div> -->
 
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript" src="js/TD.js"></script>
@@ -95,16 +95,16 @@
 			percent: 30,
 			callback: function(){
 				console.log('成功');
-			},
-			preloadback:function(){
+			 },
+			loadback:function(){
 				$('.load').remove();
 			}
 		});
 
-		//$(window).on('resize', erasure.upData);
-		$('#J_btn_clear').on('click',function(e){
-			erasure.destroy();
-		});
+		$(window).on('resize', erasure.upData);
+		// $('#J_btn_clear').on('click',function(e){
+		// 	erasure.destroy();
+		// });
 		
 		console.log(erasure);
 	</script>
