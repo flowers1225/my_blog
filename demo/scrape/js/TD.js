@@ -40,8 +40,9 @@ TD.erasure = function(elBox, opt){
 
 		//判断传入的cover值是imgobject、rgba、十六进制、url
 		if(typeof cover == 'object'){
-			cover.onload = imgonload;
 			preFill();
+			cover.onload = imgonload;
+			
 
 		}else if(cover.indexOf('rgba') != -1 || cover.indexOf('RGBA') != -1){
 			addCover();
@@ -49,10 +50,11 @@ TD.erasure = function(elBox, opt){
 		else if(cover.indexOf('#') != -1){		
 			addCover();		
 		}else{
+			preFill();
 			coverImg = new Image();
 			coverImg.onload = imgonload;
 			coverImg.src = cover;
-			preFill();
+			
 		}
 		
 		el.append(coverEl);
