@@ -1,14 +1,16 @@
 'use strict';
 var TD = TD || {};
 
-//擦玻璃
+//擦玻璃功能
 TD.erasure = function(elBox, opt){
+
 	var that = this;
 	var coverEl = null;
 	var coverImg = null;
 	var canvasW = null;
 	var canvasH = null;
 	var ctx = null;
+	var opt = opt || {};
 	var cover = opt.cover || '#ccc';
 	var position = opt.position || 'relative';
 	var lineWidth = opt.lineWidth || 50;
@@ -39,24 +41,22 @@ TD.erasure = function(elBox, opt){
 		});
 
 		//判断传入的cover值是imgobject、rgba、十六进制、url
-		if(typeof cover == 'object'){
-			preFill();
-			cover.onload = imgonload;
-			
-
-		}else if(cover.indexOf('rgba') != -1 || cover.indexOf('RGBA') != -1){
+		
+		if(typeof cover === 'object'){
+			cover.onload = coverImg.onerror = imgonload;
+		}else if(cover.indexOf('rgba') !== -1 || cover.indexOf('RGBA') !== -1){
 			addCover();
 		}
-		else if(cover.indexOf('#') != -1){		
+		else if(cover.indexOf('#') !== -1){		
 			addCover();		
 		}else{
-			preFill();
 			coverImg = new Image();
-			coverImg.onload = imgonload;
+			coverImg.onload = coverImg.onerror = imgonload;
 			coverImg.src = cover;
-			
 		}
-		
+
+		preload();
+
 		el.append(coverEl);
 	}
 
@@ -65,7 +65,7 @@ TD.erasure = function(elBox, opt){
 		opt.loadback && opt.loadback();
 	 	addCover();
 	}
-	var preFill = function(){
+	var preload = function(){
 		ctx.fillStyle = '#d1d1d1';
 		ctx.fillRect(0, 0, canvasW, canvasH);
 	}
@@ -73,13 +73,13 @@ TD.erasure = function(elBox, opt){
 	var addCover = function(){
 		//ctx.clearRect(0,0,canvasW,canvasH);
 		
-		if(typeof cover == 'object'){
+		if(typeof cover === 'object'){
 			ctx.drawImage(cover, 0, 0, canvasW, canvasH);
-		}else if(cover.indexOf('rgba') != -1 || cover.indexOf('RGBA') != -1){
+		}else if(cover.indexOf('rgba') !== -1 || cover.indexOf('RGBA') !== -1){
 			ctx.fillStyle = cover;
 			ctx.fillRect(0, 0, canvasW, canvasH);		
 		}
-		else if(cover.indexOf('#') != -1){			
+		else if(cover.indexOf('#') !== -1){			
 			ctx.fillStyle = cover;
 			ctx.fillRect(0, 0, canvasW, canvasH);				
 		}else{
@@ -153,6 +153,7 @@ TD.erasure = function(elBox, opt){
 				//这里执行回调
 				that.destroy();
 			};
+
 			//解除move end绑定
 			$(document).off('touchmove', touchmoveEvent);
 			$(document).off('touchend', touchendEvent);
@@ -192,3 +193,31 @@ TD.erasure = function(elBox, opt){
 
 	init();
 } 
+
+//滑屏功能
+TD.swiper = function(container, opt){
+	console.log(container);
+	var that = this;
+	var el = container.children[0];
+	var slides = null;
+	var length = null;
+	var width = null;
+	var height = null;
+
+	var speed = opt.speed || 300;
+	var direction = opt.direction || 'vertical';
+	
+	var init = function(){
+		//获取page个数
+		slides = el.children[0];
+		length = slides.length;
+		
+	}
+
+	//判断横、竖屏滑动
+	var isH = function(){ 
+		return 	direction === 'horizontal'
+	}
+
+	init();
+}

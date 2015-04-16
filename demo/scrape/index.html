@@ -13,8 +13,8 @@
 		}
 		.m-canvas-erasure {
 			position: relative;
-			width: 100%;
-			height: 100%;
+			width: 320px;
+			height: 320px;
 		}
 		.m-canvas-erasure .bg {
 			position: absolute;
@@ -39,7 +39,7 @@
 			display: -webkit-box;
 			-webkit-box-pack: center;
 			-webkit-box-align: center;
-			z-index:2;
+			z-index:3;
 		}
 		.m-canvas-erasure .load .inner{
 			width:42px;
@@ -78,26 +78,26 @@
 		</div>
 	</div>
 	
-	<!-- <div class="btn" id="J_btn_clear">清除</div> -->
+	<div class="btn" id="J_btn_clear">清除</div>
 
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript" src="js/TD.js"></script>
 	<script type="text/javascript">
 		var imgObj = new Image();
 			imgObj.src = 'img/scrape_2.jpg';
-
-		var erasure = new TD.erasure($('.m-canvas-erasure'),{
 			//img/scrape_2.jpg
 			//#f0f
 			//rgba(7, 246, 74, 1)
-			cover: 'img/f636afc379310a555214fc6cb54543a982261071.jpg', //url，十六进制，rgba
+
+		var erasure = new TD.erasure($('.m-canvas-erasure'),{
+			cover: 'img/f636afc379310a555214fc6cb54543a982261071.jpg', 
 			lineWidth: 60,
 			percent: 30,
 			callback: function(){
 				console.log('成功');
-			 },
+			},
 			loadback:function(){
-				$('.load').remove();
+				$('.m-canvas-erasure .load').remove();
 			}
 		});
 
