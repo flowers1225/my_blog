@@ -62,8 +62,8 @@ TD.erasure = function(elBox, opt){
 
 	//图片载入完成动作
 	var imgonload = function(){
-		opt.loadback && opt.loadback();
 	 	addCover();
+	 	opt.loadback && opt.loadback();
 	}
 	var preload = function(){
 		ctx.fillStyle = '#d1d1d1';
