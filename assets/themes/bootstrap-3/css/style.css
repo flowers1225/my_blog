@@ -95,14 +95,14 @@ h1, h2, h3, h4 {
     color: #444;
     padding: 2% 5%;
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
 }
 .m-section-index h2.title {
   font-size: 26px;
 }
 
 .m-section-index h2.title a:hover{
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .m-section-index .content{
@@ -110,7 +110,7 @@ h1, h2, h3, h4 {
 /*  border:2px solid #8E8E8E;
   border-radius: 15px 15px;*/
     padding: 10px;
-    line-height: 2;
+    line-height: 2em;
 }
 .m-section-index .content h3{
     color: #428BCA;
@@ -128,4 +128,8 @@ h1, h2, h3, h4 {
 }
 .m-section-index .content .btn-primary {
     margin-top: 20px;
+}
+
+.content p {
+  line-height: 2em;
 }
