@@ -91,7 +91,7 @@ h1, h2, h3, h4 {
 .m-section-index .section-box {
     border: 1px solid lightgray;
     /* box-shadow: 0 0 2px lightgray; */
-    background: white;
+    /*background: white;*/
     color: #444;
     padding: 2% 5%;
     position: relative;
