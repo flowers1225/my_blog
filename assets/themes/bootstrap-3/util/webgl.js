@@ -113,7 +113,7 @@ class WebGiel {
     render () {
         // requestAnimationFrame(this.render);
 
-        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_time'), (new Date().getTime() - this.startTime) / 1000);
+        this.gl.uniform1f(this.gl.getUniformLocation(this.program, 'u_time'), (new Date().getTime() - this.startTime) / 2000);
 
         this.gl.clear(this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT);
 
