@@ -5,7 +5,10 @@ permalink: /:categories/:year/:month/:day/:title
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 highlighter: pygments
 
-markdown: kramdown  
+markdown: kramdown
+
+port:    4000
+host:    127.0.0.1
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
