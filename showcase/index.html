@@ -19,11 +19,18 @@
     </script>
     <script src="dist/app.js"></script>
 </head>
-<!-- https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/ -->
+<!-- https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/ -->
 <body>
     <main>
         <!-- <div class="loading"></div> -->
         <h1 class="page-title | title">SHOWCASE<span class="slideshow__title__offset | title__offset"></span></h1>
+        <div class="page-link | link-box">
+            <div>message：</div>
+            <div><span>blog: </span><a href="https://flowers1225.com/" target="_blank" rel="noopener noreferrer">https://flowers1225.com/</a></div> 
+            <div><span>Codepen: </span><a href="https://codepen.io/flowers1225" target="_blank" rel="noopener noreferrer">https://codepen.io/flowers1225</a></div> 
+            <div><span>ShaderToy: </span><a href="https://www.shadertoy.com/user/flowers" target="_blank" rel="noopener noreferrer">https://www.shadertoy.com/user/flowers</a></div> 
+
+        </div>
         <section class="content | scrollarea-ctn">
             <div class="scrollarea | slideshow">
                 <ul class="slideshow-list">
@@ -45,8 +52,10 @@
                                 <p>功能需求遇到的难点&解决方案：</p>
                                 <p>1、当灯光打在球体的时候，未受光照的球面暗化。 通过灯光跟随相机来达到效果</p>
                                 <p>2、点位置的判断和音频的切换。这个功能做的比较就，刚开始的做法：在地球上划分五等分的区域，然后通过射线检测来判断点处于哪个区域来实现区域的划分。（刚开是因为没有点出现在南北极，所以体验上还好，后来产品说点会出现在南北极，然后这种划分办法在切换相机移动的时候就感觉很奇怪）改进做法： 反正五个点是固定的，所以通过判断两点距离哪个离的近相机就去哪个地方。这里的两个点是用射线检测与地球相交的点与五个点分别判断得到最近的距离。</p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/qqx/qqx.mp4" class="info_video" controls="true"></video>
                                 <!-- <img src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/nba/base.jpg" alt="THREEJS" class="img-gif"> -->
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/qqx/qqx.mp4" playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -71,7 +80,9 @@
                                 <p>2、3d物体在空间中进行点击检测，这个跟平常在2d平面中有所不同，之后在网上找了各种解释，通过射线检测得到3d坐标转2d坐标最后得到空间中物体的位置</p>
                                 <p>3、摄像机补间动画实现</p>
                                 <p>4、还有很多问题的解决方案参考我的分享：<a href="https://flowers1225.com/lessons/2016/02/29/1" target="_blank">首个threejs-3D项目-前端填坑指南</a></p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/nba/nba.mp4" class="info_video" controls="true"></video>
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/nba/nba.mp4"  playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -96,7 +107,9 @@
                                 <p>这是我首个使用glsl来对粒子进行特效处理</p>
                                 <p>1、glsl特效效果实现，由于刚开始接触glsl所以很多设计师想要的效果都很难实现，只能把每一个效果分解出来，然后制作单个demo，最后将效果整合起来。</p>
                                 <p>2、还有很多问题的解决方案参考我的分享：<a href="https://flowers1225.com/lessons/2018/06/12/1" target="_blank">particle背后的故事！</a></p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/didi/didi.mp4" class="info_video" controls="true"></video>
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/didi/didi.mp4" playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -122,7 +135,9 @@
                                 <p>1、动画模型的格式选择与倒入到网页中，这方面需要与模型师反复沟通与实验，来不断优化模型。</p>
                                 <p>2、需要实现灯光跟随模型一起运动，因为动画模型中没有灯光，所有灯光需要调整，之后想了个办法，拿到人物模型的动画路径数据，然后赋予给相机，有了想法就开始实现，这种调整通常都需要反复的调整。</p>
                                 <p>3、还有很多问题的解决方案参考我的分享：<a href="https://flowers1225.com/lessons/2016/12/28/1" target="_blank">从Maya中把模型搬运至网页的过程</a></p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/vivo/vivo.mp4" class="info_video" controls="true"></video>
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/vivo/vivo.mp4" playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -146,7 +161,9 @@
                                 <p>功能需求遇到的难点&解决方案：</p>
                                 <p>1、尝试使用Phaser制作游戏</p>
                                 <p>2、遇到的问题的解决方案参考我的分享：<a href="https://flowers1225.com/lessons/2016/10/21/1" target="_blank">Phaser-游戏之旅</a></p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/moto/moto.mp4" class="info_video" controls="true"></video>
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/moto/moto.mp4" playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -170,7 +187,9 @@
                                 <p>功能需求遇到的难点&解决方案：</p>
                                 <p>1、左右逐帧不同动画，实现方案：先让两个逐帧叠在一起，然后通过改宽度来达到效果</p>
                                 <p>2、这个答题活动，所以相对应的图片资源会很多，为了保证流程体验，通过分步加载来达到优化的目的</p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/hlmj/hlmj.mp4" class="info_video" controls="true"></video>
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/hlmj/hlmj.mp4" playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -194,7 +213,9 @@
                                 <p>功能需求遇到的难点&解决方案：</p>
                                 <p>1、选项音频播放&大小问题，音频资源比较多，所以像合图一样，将音频合成一条，然后通过节点名称进行对应播放</p>
                                 <p>2、图片资源会很多，为了保证流程体验，通过分步加载来达到优化的目的</p>
-                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/oneplus/oneplus.mp4" class="info_video" controls="true"></video>
+                            </div>
+                            <div class="info__video">
+                                <video src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/oneplus/oneplus.mp4" playsinline class="info_video" controls="true"></video>
                             </div>
                         </article>
                     </li>
@@ -213,12 +234,12 @@
                                     </div>
                                 </div>
                             </a>
+                            <!-- <div class="link-box">
+                                <div>线上演示：</div>
+                                <div><span>Codepen: </span><a href="https://codepen.io/flowers1225" target="_blank" rel="noopener noreferrer">https://codepen.io/flowers1225</a></div> 
+                                <div><span>ShaderToy: </span><a href="https://www.shadertoy.com/user/flowers" target="_blank" rel="noopener noreferrer">https://www.shadertoy.com/user/flowers</a></div> 
+                            </div> -->
                             <div class="info__content">
-                                <div class="link-box">
-                                    <div>线上演示：</div>
-                                    <div><span>Codepen: </span><a href="https://codepen.io/flowers1225" target="_blank" rel="noopener noreferrer">https://codepen.io/flowers1225</a></div> 
-                                    <div><span>ShaderToy: </span><a href="https://www.shadertoy.com/user/flowers" target="_blank" rel="noopener noreferrer">https://www.shadertoy.com/user/flowers</a></div> 
-                                </div>
                                 <div class="img-box">
                                     <div class="item">
                                         <img data-src="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/person/wave.jpg" alt="/" class="img-item" data-type="video" data-video="https://showcase-1301942914.cos.ap-guangzhou.myqcloud.com/showcase/img/tiles/person/wave.mp4">
@@ -369,6 +390,7 @@
                 <div class="detail-view__content">
                     <h2 class="detail-view__title | title title--large"></h2>
                     <div class="detail-view__info-content"></div>
+                    <div class="detail-view__info-content-video"></div>
                 </div>
             </div>
         </aside>
