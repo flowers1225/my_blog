@@ -326,11 +326,13 @@ body {
   opacity: .2; }
   @media only screen and (max-width: 767px) {
     .page-title {
-      font-size: calc(4vw + 5rem); } }
+      font-size: calc(4vw + 5rem);
+      top: 6rem; } }
 
 .page-link {
+  font-family: 'orpheuspro', serif;
   position: fixed;
-  top: 2rem;
+  bottom: 1rem;
   right: 2vw;
   z-index: 10;
   line-height: 1.975;
@@ -342,7 +344,7 @@ body {
       top: auto;
       right: auto;
       left: 3vw;
-      bottom: 6rem; } }
+      bottom: 4rem; } }
 
 .line-ctn {
   display: block;
@@ -531,9 +533,9 @@ body {
 .slideshow__progress-ctn {
   overflow: hidden;
   position: absolute;
-  bottom: 5%;
-  left: calc(50% - 6.5rem);
-  width: 13rem;
+  top: 0;
+  left: 0;
+  width: 100vw;
   height: .4rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: .4rem;
